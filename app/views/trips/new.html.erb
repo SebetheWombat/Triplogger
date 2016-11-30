@@ -1,4 +1,4 @@
-<%= form_for @trip do |f| %>
+<%= form_for @my_trip do |f| %>
 	<div class = "container">
 		<h3>Trip Details</h3>
 		<div>
@@ -25,5 +25,7 @@
 	  		<%= f.label :summary %><br>
 	  		<%= f.text_area :summary %>
 	  	</div>
+
+	  	<%= f.button %>
 	</div>
 <% end %>
