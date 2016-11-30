@@ -9,6 +9,44 @@
   </head>
 
   <body>
+  	<nav class="navbar navbar-default">
+  	<% if user_signed_in? %>
+  		<div class="navbar-header">
+      		<a class="navbar-brand" href="/">Triplogger</a>
+    	</div>
+  		<%= link_to "Logout", destroy_user_session_path, class: "right", method: 'delete' %>
+  	<%else%>
+  		<div class="navbar-header">
+      		<a class="navbar-brand" href="/">Triplogger</a>
+    	</div>
+
+  		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+		  <div class="field inlineBlock">
+		    <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+		  </div>
+
+		  <div class="field inlineBlock">
+		    <%= f.password_field :password, placeholder: "Password", autocomplete: "off" %>
+		  </div>
+
+		  <div class="actions inlineBlock">
+		    <%= f.submit "Log in" %>
+		  </div>
+		  
+		<% end %>
+
+  		<%= link_to "Sign Up", new_user_registration_path, class: "right" %>
+  	<%end%>
+  	</nav>
+  	<% if notice %>
+      <p class="notice"><%= notice %></p>
+    <%end%>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <%end%>
     <%= yield %>
+    <footer>
+    	<small>From the labs of the Wombat!</small>
+    </footer>
   </body>
 </html>

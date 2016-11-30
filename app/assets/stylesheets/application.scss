@@ -13,3 +13,39 @@
  */
 @import "bootstrap";
 @import 'site.scss';
+@import 'users.scss';
+
+nav{
+	height: 60px;
+	background: #224159;
+}
+footer{
+	height:40px;
+	width:100%;
+	background: #224159;
+	color:#fff;
+	text-align: center;
+	position: fixed;
+	bottom:0;
+}
+small{
+	text-transform: uppercase;
+}
+.inlineBlock{
+	display: inline-block;
+}
+
+.container{
+	width:600px;
+	margin:0 auto;
+	text-align: center;
+}
+nav a{
+	color: #fff;
+}
+nav a:hover{
+	color: #ddd;
+}
+.right{
+	float:right;
+}
