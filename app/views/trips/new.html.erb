@@ -1,5 +1,5 @@
-<%= form_for @my_trip do |f| %>
-	<div class = "container">
+<div class = "container">
+	<%= form_for @my_trip do |f| %>
 		<h3>Trip Details</h3>
 		<div>
 			<%= f.label :location %><br>
@@ -27,5 +27,10 @@
 	  	</div>
 
 	  	<%= f.button %>
-	</div>
-<% end %>
+	<% end %>
+
+	<h4>+ Add Activity</h4>
+	<%= render "activityform" %>
+	<h4>+ Add Cultural </h4>
+	<%= render "activityform" %>
+</div>

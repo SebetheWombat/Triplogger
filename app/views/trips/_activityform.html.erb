@@ -1,0 +1,11 @@
+<%= form_for @new_activity do |f| %>
+	<div>
+		<%= f.label :title %><br>
+		<%= f.text_field :title %>
+	</div>
+
+	<div>
+		<%= f.label :description %><br>
+		<%= f.text_area :description %>
+	</div>
+<%end%>

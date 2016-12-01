@@ -3,6 +3,7 @@ class TripsController < ApplicationController
 	def new
 		
 		@my_trip = Trip.new
+		@new_activity = Activity.new
 	end
 
 	def create
