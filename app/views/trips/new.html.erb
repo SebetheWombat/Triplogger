@@ -1,5 +1,5 @@
 <div class = "container">
-	<%= form_for @my_trip do |f| %>
+	<%= form_for @my_trip, html: {id: "js-trip-form"} do |f| %>
 		<h3>Trip Details</h3>
 		<div>
 			<%= f.label :location %><br>
@@ -28,9 +28,30 @@
 
 	  	<%= f.button %>
 	<% end %>
+	<div id="js-activities-form">
+		<h3>Go ahead! Add some activities!</h3>
+		<div>
+			<p class="js-actlink" >+ Add Activity</p>
+			<div class= "actform hide" data-category="activity">
+				<%= render "activityform" %>
+			</div>
+		</div>
+		<div>
+			<p class = "js-actlink" >+ Add Cultural</p>
+			<div class = "actform hide" data-category="cultural">
+				<%= render "activityform" %>
+			</div>
+		</div>
+		<div>
+			<p class = "js-actlink" >+ Add Music</p>
+			<div class = "actform hide" data-category="music">
+				<%= render "activityform" %>
+			</div>
+		</div>
+		<%= link_to "I'M DONE!", trip_path(Trip.last.id + 1)%>
+	</div>
+	<div>
+		<p class = "js-actlink">+ Add Photos</p>
+	</div>
 
-	<h4>+ Add Activity</h4>
-	<%= render "activityform" %>
-	<h4>+ Add Cultural </h4>
-	<%= render "activityform" %>
 </div>

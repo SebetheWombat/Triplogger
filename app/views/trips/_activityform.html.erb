@@ -1,4 +1,5 @@
-<%= form_for @new_activity do |f| %>
+<%= form_for @new_activity, html: {class: "activity-form"} do |f| %>
+	<%= f.hidden_field :category, value: "Testing hidden field", class: "hidden" %>
 	<div>
 		<%= f.label :title %><br>
 		<%= f.text_field :title %>
@@ -8,4 +9,6 @@
 		<%= f.label :description %><br>
 		<%= f.text_area :description %>
 	</div>
+
+	<%= f.button %>
 <%end%>

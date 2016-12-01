@@ -5,3 +5,10 @@
 <%= @my_trip.start_date %>
 <%= @my_trip.end_date %>
 <%= @my_trip.summary %>
+<h3>Activities</h3>
+<% @my_trip.activities.each do |activity| %>
+
+	<%= activity.title %>
+	<%= activity.category %>
+	<%= activity.description %>
+<%end%>

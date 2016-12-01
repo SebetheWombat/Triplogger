@@ -8,4 +8,19 @@ $(document).on('turbolinks:load', function(){
 		console.log(input);
 		var autocomplete = new google.maps.places.Autocomplete(input);
 	});
+	$('.js-actlink').click(function(){
+		console.log("link clicked");
+		$(this).siblings().toggleClass('hide');
+	});
+	$('#js-trip-form').submit(function(){
+		$(this).hide();
+		$('#js-activities-form').show();
+		console.log("SUBMITTED!");
+	});
+	$('.activity-form').submit(function(){
+		console.log("NEW ACTIVITY CREATED!");
+		var category = $(this).parent().data("category");
+		$(this).toggleClass('hide');
+		$(this).find('.hidden').val(category);
+	});
 });
