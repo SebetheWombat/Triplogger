@@ -4,14 +4,15 @@ class TripsController < ApplicationController
 		@my_trip = Trip.new
 		@new_activity = Activity.new
 		@my_photo = Photo.new
-		@id = 1
-		if Trip.last != nil
-			@id += Trip.last.id
-		end
 	end
 
 	def create
-		@my_trip = current_user.trips.create(trip_params)
+		@my_trip = current_user.trips.new(trip_params)
+		puts "MY TRIP"
+		puts @my_trip.id
+		puts ""
+		@my_trip.save
+
 	end
 
 	def show

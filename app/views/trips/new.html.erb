@@ -27,7 +27,7 @@
 	  		<%= f.text_area :summary %>
 	  	</div>
 
-	  	<%= f.button %>
+	  	<%= f.submit %>
 	<% end %>
 	<div id="js-activities-form" class="hide">
 		<h3>Go ahead! Add some activities!</h3>
@@ -73,7 +73,11 @@
 				<%= render "photoform" %>
 			</div>
 		</div>
-		<%= link_to "I'M DONE!", trip_path(@id)%>
+		<% if Trip.last != nil %>
+			<%= link_to "I'M DONE!", trip_path(Trip.last.id + 1)%>
+		<%else%>
+			<%= link_to "I'M DONE!", trip_path(1) %>
+		<%end%>
 	</div>
 	
 

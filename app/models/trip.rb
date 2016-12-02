@@ -3,5 +3,5 @@ class Trip < ApplicationRecord
 	has_many :activities
 	has_many :photos
 
-	validates_inclusion_of :rating, in: 1..10
+	# validates_inclusion_of :rating, in: 1..10
 end
