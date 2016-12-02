@@ -3,8 +3,10 @@ class SiteController < ApplicationController
 
 		trips = Trip.all
 		markers = []
-		trips.each do |trip|
-			markers.push(trip.location)
+		if current_user != nil
+			current_user.trips.each do |trip|
+				markers.push(trip.location)
+			end
 		end
 		gon.markers = markers
 
