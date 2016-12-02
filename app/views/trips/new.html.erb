@@ -8,7 +8,7 @@
 
 	  	<div>
 	  		<%= f.label :rating %><br>
-	  		<%= f.number_field :rating %>
+	  		<%= f.number_field :rating, in: 1..10 %>
 	  	</div>
 
 	  	<div>
@@ -45,6 +45,24 @@
 		<div>
 			<p class = "js-actlink" >+ Add Music</p>
 			<div class = "actform hide" data-category="music">
+				<%= render "activityform" %>
+			</div>
+		</div>
+		<div>
+			<p class = "js-actlink" >+ Add Adventure</p>
+			<div class = "actform hide" data-category="adventure">
+				<%= render "activityform" %>
+			</div>
+		</div>
+		<div>
+			<p class = "js-actlink" >+ Add Nature</p>
+			<div class = "actform hide" data-category="nature">
+				<%= render "activityform" %>
+			</div>
+		</div>
+		<div>
+			<p class = "js-actlink" >+ Add Educational</p>
+			<div class = "actform hide" data-category="education">
 				<%= render "activityform" %>
 			</div>
 		</div>

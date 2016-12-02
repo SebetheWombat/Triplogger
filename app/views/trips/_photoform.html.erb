@@ -1,14 +1,14 @@
-<%= form_for @my_photo, html: {multipart: true} do |f| %>
+<%= form_for @my_photo, html: {class: "photo-form", multipart: true} do |f| %>
 
 	<div>
 		<%= f.label :title %>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, class: "ptitle" %>
 	</div>
 
 	<div>
 		<%= f.label :image %>
-		<%= f.file_field :image %>
+		<%= f.file_field :image, class: "image" %>
 	</div>
 
-	<%= f.submit 'Upload' %>
+	<%= f.button 'Upload' %>
 <%end%>

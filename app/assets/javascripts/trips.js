@@ -26,6 +26,13 @@ $(document).on('turbolinks:load', function(){
 		setTimeout(function(){
 			$('.title').val("");
 			$('.desc').val("");
-		})
+		});
+	});
+	$('.photo-form').submit(function(){
+		console.log("SUCH A PRETTY PICTURE!");
+
+		setTimeout(function(){
+			$('.photo-form')[0].reset();
+		});
 	});
 });
