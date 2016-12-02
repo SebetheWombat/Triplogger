@@ -17,10 +17,16 @@ $(document).on('turbolinks:load', function(){
 		$('#js-activities-form').show();
 		console.log("SUBMITTED!");
 	});
-	$('.activity-form').submit(function(){
+	//Trying to submit form and then clear values
+	$('.activity-form').submit(function(e){
 		console.log("NEW ACTIVITY CREATED!");
 		var category = $(this).parent().data("category");
-		$(this).toggleClass('hide');
+		// $(this).toggleClass('hide');
 		$(this).find('.hidden').val(category);
+
+		setTimeout(function(){
+			$('.title').val("");
+			$('.desc').val("");
+		})
 	});
 });

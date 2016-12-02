@@ -2,12 +2,12 @@
 	<%= f.hidden_field :category, value: "Testing hidden field", class: "hidden" %>
 	<div>
 		<%= f.label :title %><br>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, class: "title" %>
 	</div>
 
 	<div>
 		<%= f.label :description %><br>
-		<%= f.text_area :description %>
+		<%= f.text_area :description, class: "desc" %>
 	</div>
 
 	<%= f.button %>
