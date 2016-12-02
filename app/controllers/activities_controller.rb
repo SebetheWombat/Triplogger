@@ -8,6 +8,8 @@ class ActivitiesController < ApplicationController
 		@new_activity = @my_trip.activities.create(active_params)
 	end
 
+	private
+
 	def active_params
 		params.require(:activity).permit(:category, :title, :description)
 	end

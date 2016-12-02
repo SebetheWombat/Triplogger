@@ -21,7 +21,6 @@ $(document).on('turbolinks:load', function(){
 	$('.activity-form').submit(function(e){
 		console.log("NEW ACTIVITY CREATED!");
 		var category = $(this).parent().data("category");
-		// $(this).toggleClass('hide');
 		$(this).find('.hidden').val(category);
 
 		setTimeout(function(){

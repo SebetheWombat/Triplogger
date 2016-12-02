@@ -12,3 +12,7 @@
 	<%= activity.category %>
 	<%= activity.description %>
 <%end%>
+
+<% @my_trip.photos.each do |photo| %>
+	<%= image_tag(photo.image.url) %>
+<%end%>

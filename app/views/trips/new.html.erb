@@ -48,10 +48,14 @@
 				<%= render "activityform" %>
 			</div>
 		</div>
+		<div>
+			<p class = "js-actlink">+ Add Photos</p>
+			<div class = "hide">
+				<%= render "photoform" %>
+			</div>
+		</div>
 		<%= link_to "I'M DONE!", trip_path(Trip.last.id + 1)%>
 	</div>
-	<div>
-		<p class = "js-actlink">+ Add Photos</p>
-	</div>
+	
 
 </div>
