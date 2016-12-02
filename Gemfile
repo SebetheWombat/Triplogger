@@ -9,7 +9,7 @@ gem 'sprockets-es6', require: 'sprockets/es6'
 gem 'rails_12factor', group: :production
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'paperclip', '~>5.0.0'
-
+gem 'gon'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'

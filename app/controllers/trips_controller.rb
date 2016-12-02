@@ -4,6 +4,10 @@ class TripsController < ApplicationController
 		@my_trip = Trip.new
 		@new_activity = Activity.new
 		@my_photo = Photo.new
+		@id = 1
+		if Trip.last != nil
+			@id += Trip.last.id
+		end
 	end
 
 	def create
