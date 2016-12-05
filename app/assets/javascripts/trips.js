@@ -35,4 +35,26 @@ $(document).on('turbolinks:load', function(){
 			$('.photo-form')[0].reset();
 		});
 	});
+	showDescription();
+
 });
+
+
+function showDescription(){
+	$('.act-title').click(function(){
+		var title = $(this).text();
+		var desc = $(this).siblings().text();
+		var html = "<h4>" + title + "</h4>" + desc
+		$("#summary").html(html);
+	});
+}
+
+
+
+
+
+
+
+
+
+

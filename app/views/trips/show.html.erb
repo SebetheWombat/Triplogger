@@ -1,12 +1,12 @@
 <div class="show-container">
 	<div id="show-location">
-		<h3><%= @my_trip.location %></h3>
-		<%= @my_trip.rating %>
+		<h3><%= @my_trip.location %>
+		<span><small><%= @my_trip.rating %></small></span></h3>
 	</div>
 
 	<div id="dates">
-		<%= @my_trip.start_date %>
-		<%= @my_trip.end_date %>
+		<%= @my_trip.start_date.strftime( "%b. %d, %Y") %> - 
+		<%= @my_trip.end_date.strftime( "%b. %d, %Y") %>
 	</div>
 
 	<div id="show-images">
@@ -15,17 +15,21 @@
 		<%end%>
 	</div>
 
-
-
-
 	<section>
-		<h3>Activities</h3>
-		<% @my_trip.activities.each do |activity| %>
-
-			<%= activity.title %>
-			<%= activity.category %>
-			<%= activity.description %>
-		<%end%>
-		<%= @my_trip.summary %>
+		<div id="activities" class="left">
+			<h4>Activities</h4>
+			<% @my_trip.activities.each do |activity| %>
+				<div>
+					<p class="activity">
+						<p class="act-title"><%= activity.title %></p>
+						<p class="activity-description hide" > <%= activity.description %></p>
+					</p>
+				</div>
+			<%end%>
+		</div>
+		<div id="summary" class="left">
+			<h4>Summary</h4>
+			<%= @my_trip.summary %>
+		</div>
 	</section>
 </div>
