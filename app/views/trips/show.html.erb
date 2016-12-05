@@ -1,18 +1,31 @@
-<h1>show</h1>
+<div class="show-container">
+	<div id="show-location">
+		<h3><%= @my_trip.location %></h3>
+		<%= @my_trip.rating %>
+	</div>
 
-<%= @my_trip.location %>
-<%= @my_trip.rating %>
-<%= @my_trip.start_date %>
-<%= @my_trip.end_date %>
-<%= @my_trip.summary %>
-<h3>Activities</h3>
-<% @my_trip.activities.each do |activity| %>
+	<div id="dates">
+		<%= @my_trip.start_date %>
+		<%= @my_trip.end_date %>
+	</div>
 
-	<%= activity.title %>
-	<%= activity.category %>
-	<%= activity.description %>
-<%end%>
+	<div id="show-images">
+		<% @my_trip.photos.each do |photo| %>
+			<%= image_tag(photo.image.url(:medium)) %>
+		<%end%>
+	</div>
 
-<% @my_trip.photos.each do |photo| %>
-	<%= image_tag(photo.image.url(:medium)) %>
-<%end%>
+
+
+
+	<section>
+		<h3>Activities</h3>
+		<% @my_trip.activities.each do |activity| %>
+
+			<%= activity.title %>
+			<%= activity.category %>
+			<%= activity.description %>
+		<%end%>
+		<%= @my_trip.summary %>
+	</section>
+</div>
