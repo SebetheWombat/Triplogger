@@ -13,7 +13,6 @@ function initMap (from) {
 	}
 }
 
-
 $(document).on('turbolinks:load', function(){
 	console.log("You're JS is WIRED!");
 	$("#slide-trip").click(function(){
@@ -23,7 +22,6 @@ $(document).on('turbolinks:load', function(){
 	// for when you click around and return to home page
 	initMap("our code");
 });
-
 
   var map;
   

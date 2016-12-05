@@ -36,18 +36,36 @@ $(document).on('turbolinks:load', function(){
 		});
 	});
 	showDescription();
-
+	replaceImage();
+	$('#closeout').click(function(){
+		$("#orig-sum").show();
+		$("#new-sum").hide();
+		$(this).addClass('hide');
+	});
 });
 
 
 function showDescription(){
 	$('.act-title').click(function(){
+		$("#new-sum").show();
+		$("#closeout").removeClass('hide');
 		var title = $(this).text();
 		var desc = $(this).siblings().text();
 		var html = "<h4>" + title + "</h4>" + desc
-		$("#summary").html(html);
+		$("#new-sum").html(html);
+		$("#orig-sum").hide();
+	});
+
+}
+
+function replaceImage(){
+	$('.thumb').click(function(){
+		var imgSrc = $(this).attr("src")
+		$('#main-show').attr("src", $(this).attr("src"));
+		console.log($(this).attr("src"));
 	});
 }
+
 
 
 

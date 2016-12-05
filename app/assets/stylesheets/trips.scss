@@ -14,11 +14,46 @@
 
 #activities{
 	width:40%;
+	margin-bottom: 100px;
 }
 #summary{
 	width:50%;
+	margin-bottom:100px;
 }
-
-.act-title{
+section{
+	margin-top:50px;
+	margin-bottom:100px;
+}
+.act-title:hover{
 	cursor:pointer;
 }
+
+#scrollbar-images{
+	height:50px;
+}
+#scrollbar-images img{
+	border-radius: 100%;
+	margin:15px 3px;
+}
+#scrollbar-images img:hover{
+	cursor:pointer;
+}
+#main-image{
+	height:400px;
+}
+.img-responsive{
+	height:100%;
+
+}
+#closeout{
+	float:right;
+	color: #666;
+}
+
+#closeout:hover{
+	color:#000;
+	cursor: pointer;
+}
+// #js-activities-form{
+// 	margin-left:
+// }

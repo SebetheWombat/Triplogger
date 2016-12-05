@@ -5,14 +5,25 @@
 	</div>
 
 	<div id="dates">
-		<%= @my_trip.start_date.strftime( "%b. %d, %Y") %> - 
-		<%= @my_trip.end_date.strftime( "%b. %d, %Y") %>
+		<% if @my_trip.start_date != nil %>
+			<%= @my_trip.start_date.strftime( "%b. %d, %Y") %> - 
+		<%end%>
+		<% if @my_trip.end_date != nil %>
+			<%= @my_trip.end_date.strftime( "%b. %d, %Y") %>
+		<%end%>
 	</div>
 
 	<div id="show-images">
-		<% @my_trip.photos.each do |photo| %>
-			<%= image_tag(photo.image.url(:medium)) %>
-		<%end%>
+		<div id="main-image">
+			<% if @my_trip.photos.length > 0 %>
+				<%= image_tag(@my_trip.photos[0].image.url, class: "img-responsive", id: "main-show") %>
+			<%end%>
+		</div>
+		<div id="scrollbar-images">
+			<% @my_trip.photos.each do |photo| %>
+				<%= image_tag(photo.image.url, class: "img-responsive thumb") %>
+			<%end%>
+		</div>
 	</div>
 
 	<section>
@@ -28,8 +39,12 @@
 			<%end%>
 		</div>
 		<div id="summary" class="left">
-			<h4>Summary</h4>
-			<%= @my_trip.summary %>
+			<div id="closeout" class="hide">X</div>
+			<div id="orig-sum">
+				<h4>Summary</h4>
+				<%= @my_trip.summary %>
+			</div>
+			<div id="new-sum"></div>
 		</div>
 	</section>
 </div>
