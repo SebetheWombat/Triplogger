@@ -37,6 +37,7 @@ $(document).on('turbolinks:load', function(){
 	});
 	showDescription();
 	replaceImage();
+	displayCategories();
 	$('#closeout').click(function(){
 		$("#orig-sum").show();
 		$("#new-sum").hide();
@@ -66,7 +67,15 @@ function replaceImage(){
 	});
 }
 
-
+function displayCategories(){
+	var cat = $('.act-category').data('actCat');
+	console.log(cat);
+	var lastCat = "";
+	var curCat = "";
+	// for(var i = 1; i < cat.length; cat++){
+		
+	// }
+}
 
 
 

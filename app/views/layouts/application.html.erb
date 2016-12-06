@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Triplogger</title>
+    <title>Trek Tracker</title>
     <%= include_gon %>
     <%= csrf_meta_tags %>
 
@@ -16,13 +16,13 @@ async defer></script>
   	<nav class="navbar navbar-default">
   	<% if user_signed_in? %>
   		<div class="navbar-header">
-      		<a class="navbar-brand" href="/">Triplogger</a>
+      		<a class="navbar-brand" href="/">TrekTracker</a>
     	</div>
     	<%= link_to "+ Add Trip", new_trip_path %>
   		<%= link_to "Logout", destroy_user_session_path, class: "right", method: 'delete' %>
   	<%else%>
   		<div class="navbar-header">
-      		<a class="navbar-brand" href="/">Triplogger</a>
+      		<a class="navbar-brand" href="/">TrekTracker</a>
     	</div>
 
   		<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
