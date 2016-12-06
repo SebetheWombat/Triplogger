@@ -13,19 +13,28 @@ $(document).on('turbolinks:load', function(){
 		$(this).siblings().toggleClass('hide');
 	});
 	$('#js-trip-form').submit(function(){
+		var tripLoc = $('#location').val();
+		var rating = $('#rating').val();
+		var start = $('#start_date').val();
+		var end = $('#end_date').val();
+		$('#tripPreview').append(`<p>${tripLoc}</p><p>${rating}</p><p>${start}/${end}</p>`);
+
 		$(this).hide();
 		$('#js-activities-form').show();
 		console.log("SUBMITTED!");
 	});
 	//Trying to submit form and then clear values
 	$('.activity-form').submit(function(e){
+		
 		console.log("NEW ACTIVITY CREATED!");
 		var category = $(this).parent().data("category");
 		$(this).find('.hidden').val(category);
-
+		$(this).parent().addClass('hide');
+		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+$(this).find('.title').val()+"</p><p class='desc hide'>"+$(this).find('.description').val()+"hello</p></div>");
 		setTimeout(function(){
 			$('.title').val("");
 			$('.desc').val("");
+
 		});
 	});
 	$('.photo-form').submit(function(){
@@ -35,6 +44,7 @@ $(document).on('turbolinks:load', function(){
 			$('.photo-form')[0].reset();
 		});
 	});
+	showPreviewDescription();
 	showDescription();
 	replaceImage();
 	displayCategories();
@@ -68,16 +78,26 @@ function replaceImage(){
 }
 
 function displayCategories(){
-	var cat = $('.act-category').data('actCat');
-	console.log(cat);
-	var lastCat = "";
-	var curCat = "";
-	// for(var i = 1; i < cat.length; cat++){
-		
-	// }
+	
+	var seen = {};
+	$('b').each(function(){
+		var c = $(this).text();
+		if(seen[c]){
+			$(this).remove();
+			console.log(c);
+		}else{
+			seen[c] = true;
+		}
+	});
+	console.log(seen);
 }
 
-
+function showPreviewDescription(){
+	$('#activityPreview').on('click', '.prevact', function(){
+		console.log("Show Preview Description");
+		$(this).find('.desc').toggleClass('hide');
+	});
+}
 
 
 

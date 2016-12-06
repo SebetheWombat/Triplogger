@@ -29,10 +29,11 @@
 	<section>
 		<div id="activities" class="left">
 			<h4>Activities</h4>
-			<% @my_trip.activities.each do |activity| %>
+			
+			<% @my_trip.activities.sort{|a,b| a.category <=> b.category}.each do |activity| %>
 				<div>
 					<p class="activity">
-						<p class="act-category" data-actCat=<%= activity.category %>></p>
+						<p class="act-category"><b><%= activity.category %>:</b></p>
 						<p class="act-title"><%= activity.title %></p>
 						<p class="activity-description hide" > <%= activity.description %></p>
 					</p>

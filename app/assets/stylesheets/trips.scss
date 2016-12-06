@@ -26,6 +26,7 @@ section{
 }
 .act-title:hover{
 	cursor:pointer;
+	text-shadow: 2px 2px #000;
 }
 
 #scrollbar-images{
@@ -43,7 +44,6 @@ section{
 }
 .img-responsive{
 	height:100%;
-
 }
 #closeout{
 	float:right;
@@ -54,6 +54,26 @@ section{
 	color:#000;
 	cursor: pointer;
 }
-// #js-activities-form{
-// 	margin-left:
-// }
+.act-category{
+	text-transform: capitalize;
+}
+#preview{
+
+	width:40%;
+	border: 1px solid black;
+	min-height: 500px;
+}
+#addactivity{
+	width:55%;
+}
+.prevTitle{
+	color:#8b95a5;
+	text-decoration:underline;
+}
+.prevTitle:hover{
+	color:#5c6370;
+	cursor:pointer;
+}
+.desc{
+	border: 1px solid black;
+}

@@ -4,6 +4,7 @@ class TripsController < ApplicationController
 		@my_trip = Trip.new
 		@new_activity = Activity.new
 		@my_photo = Photo.new
+		
 	end
 
 	def create
