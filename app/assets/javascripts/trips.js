@@ -12,38 +12,10 @@ $(document).on('turbolinks:load', function(){
 		console.log("link clicked");
 		$(this).siblings().toggleClass('hide');
 	});
-	$('#js-trip-form').submit(function(){
-		var tripLoc = $('#location').val();
-		var rating = $('#rating').val();
-		var start = $('#start_date').val();
-		var end = $('#end_date').val();
-		$('#tripPreview').append(`<p>${tripLoc}</p><p>${rating}</p><p>${start}/${end}</p>`);
-
-		$(this).hide();
-		$('#js-activities-form').show();
-		console.log("SUBMITTED!");
-	});
-	//Trying to submit form and then clear values
-	$('.activity-form').submit(function(e){
-		
-		console.log("NEW ACTIVITY CREATED!");
-		var category = $(this).parent().data("category");
-		$(this).find('.hidden').val(category);
-		$(this).parent().addClass('hide');
-		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+$(this).find('.title').val()+"</p><p class='desc hide'>"+$(this).find('.description').val()+"hello</p></div>");
-		setTimeout(function(){
-			$('.title').val("");
-			$('.desc').val("");
-
-		});
-	});
-	$('.photo-form').submit(function(){
-		console.log("SUCH A PRETTY PICTURE!");
-
-		setTimeout(function(){
-			$('.photo-form')[0].reset();
-		});
-	});
+	createTrip();
+	addActivity();
+	uploadPhoto();
+	
 	showPreviewDescription();
 	showDescription();
 	replaceImage();
@@ -55,6 +27,54 @@ $(document).on('turbolinks:load', function(){
 	});
 });
 
+function createTrip(){
+	$('#js-trip-form').submit(function(){
+		var tripLoc = $('#location').val();
+		var rating = $('#rating').val();
+		var start = $('#start_date').val();
+		start = start.split("-").reverse().join("/");
+		var end = $('#end_date').val();
+		if(end !== ""){
+			end = " - " + end.split("-").reverse().join("/");
+		}
+		$('#tripPreview').append(`<p>${tripLoc}</p>`)
+		$('#tripPreview').append(`<p>${rating}</p>`)
+		$('#tripPreview').append(`<p>${start}${end}</p>`);
+
+		$(this).hide();
+		$('#js-activities-form').show();
+		console.log("SUBMITTED!");
+	});
+}
+
+function addActivity(){
+	$('.activity-form').submit(function(e){
+		console.log("NEW ACTIVITY CREATED!");
+		var category = $(this).parent().data("category");
+		$(this).find('.hidden').val(category);
+		$(this).parent().addClass('hide');
+		var title = $(this).find('.title').val()
+		console.log(title);
+		if(title === ""){
+			title = "Untitled";
+		}
+		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><p class='desc hide'>"+$(this).find('.description').val()+"</p></div>");
+		setTimeout(function(){
+			$('.title').val("");
+			$('.desc').val("");
+		});
+	});
+}
+
+function uploadPhoto(){
+	$('.photo-form').submit(function(){
+		console.log("SUCH A PRETTY PICTURE!");
+		addPreviewThumbnail()
+		setTimeout(function(){
+			$('.photo-form')[0].reset();
+		});
+	});
+}
 
 function showDescription(){
 	$('.act-title').click(function(){
@@ -78,7 +98,6 @@ function replaceImage(){
 }
 
 function displayCategories(){
-	
 	var seen = {};
 	$('b').each(function(){
 		var c = $(this).text();
@@ -97,6 +116,13 @@ function showPreviewDescription(){
 		console.log("Show Preview Description");
 		$(this).find('.desc').toggleClass('hide');
 	});
+}
+
+function addPreviewThumbnail(){
+	var img = $('.image').val();
+	console.log(img);
+	 var html = "<img src='/system/photos/images/000/000/011/thumb/test_img1.jpg'>"
+	 $('#photoPreview').append(html);
 }
 
 

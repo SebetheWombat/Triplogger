@@ -24,9 +24,12 @@ section{
 	margin-top:50px;
 	margin-bottom:100px;
 }
+.act-title{
+	color:#464667;
+}
 .act-title:hover{
 	cursor:pointer;
-	text-shadow: 2px 2px #000;
+	text-decoration:underline;
 }
 
 #scrollbar-images{

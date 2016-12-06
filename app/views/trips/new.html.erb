@@ -75,21 +75,22 @@
 				</div>
 			</div>
 			<% if Trip.last != nil %>
-				<%= link_to "I'M DONE!", trip_path(Trip.last.id + 1)%>
+				<%= link_to "I'M DONE!", trip_path(Trip.last.id + 1), class: "btn btn-primary"%>
 			<%else%>
-				<%= link_to "I'M DONE!", trip_path(1) %>
+				<%= link_to "I'M DONE!", trip_path(1), class: "btn btn-primary" %>
 			<%end%>
 		</div>
 		<div class="left" id="preview">
 			<h3>Your Trip so Far:</h3>
 			<div id="tripPreview">
-				<h4>Trip Details</h4>
+				<h5>Trip Details</h5>
 			</div>
 			<div id="photoPreview">
-				<h4>Photos</h4>
+				<h5>Photos</h5>
+
 			</div>
 			<div id="activityPreview">
-				<h4>Activities</h4>
+				<h5>Activities</h5>
 			</div>
 			
 		</div>
