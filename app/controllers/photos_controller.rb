@@ -4,8 +4,16 @@ class PhotosController < ApplicationController
 	end
 
 	def create
+		
 		@my_trip = Trip.last
 		@my_photo = @my_trip.photos.create(photo_params)
+	end
+
+	def imageUrl
+		@my_trip = Trip.last
+		@my_photo = @my_trip.photos.last.image.url
+
+		render json: @my_photo
 	end
 
 	private

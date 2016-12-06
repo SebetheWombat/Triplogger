@@ -120,9 +120,10 @@ function showPreviewDescription(){
 
 function addPreviewThumbnail(){
 	var img = $('.image').val();
-	console.log(img);
-	 var html = "<img src='/system/photos/images/000/000/011/thumb/test_img1.jpg'>"
-	 $('#photoPreview').append(html);
+
+
+	 //var html = "<img src=" + gon.image[0].url + ">"
+	 //$('#photoPreview').append(html);
 }
 
 
