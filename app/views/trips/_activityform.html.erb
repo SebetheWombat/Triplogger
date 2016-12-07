@@ -1,13 +1,17 @@
 <%= form_for @new_activity, html: {class: "activity-form"} do |f| %>
 	<%= f.hidden_field :category, value: "Testing hidden field", class: "hidden" %>
-	<div>
-		<%= f.label :title %><br>
-		<%= f.text_field :title, class: "title" %>
+	<div class="form-group row">
+		<%= f.label :title, class: "col-md-2 col-form-label" %>
+		<div class="col-md-8">
+			<%= f.text_field :title, class: "title form-control" %>
+		</div>
 	</div>
 
-	<div>
-		<%= f.label :description %><br>
-		<%= f.text_area :description, class: "description" %>
+	<div class="form-group row">
+		<%= f.label :description, class: "col-md-2 col-form-label" %>
+		<div class="col-md-8">
+			<%= f.text_area :description, class: "description form-control" %>
+		</div>
 	</div>
 
 	<%= f.button %>

@@ -16,6 +16,11 @@
 @import 'users.scss';
 @import 'trips.scss';
 
+body{
+	//background: #e3e8ef;
+	background: #f2f4f7;
+	line-height: 1.4;
+}
 nav{
 	height: 60px;
 	background: #224159;
@@ -37,9 +42,10 @@ small{
 }
 
 .container{
-	width:80%;
-	margin:15px auto;
-	text-align: center;
+	width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
 }
 nav a{
 	color: #fff;

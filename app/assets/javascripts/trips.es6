@@ -54,9 +54,11 @@ function createTrip(){
 					end = " - " + end.split("-").reverse().join("/");
 				}
 				$('#tripPreview').append(`<p>${tripLoc}</p>`)
-				$('#tripPreview').append(`<p>${rating}</p>`)
+				if(rating !== undefined){
+					$('#tripPreview').append(`<p>Rating: ${rating}</p>`)
+				}
+				
 				$('#tripPreview').append(`<p>${start}${end}</p>`);
-
 				$('#js-trip-form').hide();
 				$('#js-activities-form').show();
 				$(".alert").remove();
@@ -82,7 +84,7 @@ function addActivity(){
 			if(slideText.length > 300){
 				slideText = slideText.substring(0, 300) + "...";
 			}
-		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><p class='desc hide'>"+slideText+"</p></div>");
+		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><div class='desc hide'>"+slideText+"</div></div>");
 		setTimeout(function(){
 			$('.title').val("");
 			$('.description').val("");
