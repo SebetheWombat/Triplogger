@@ -9,7 +9,17 @@
 
 	  	<div>
 	  		<%= f.label :rating %><br>
-	  		<%= f.number_field :rating, in: 1..10, id: 'rating' %>
+	  		
+	  		<%= f.radio_button :rating, 1, class: 'rating' %>
+	  		<%= f.label :rating_1, '1', class: 'btn btn-info' %>
+	  		<%= f.radio_button :rating, 2, class: 'rating' %>
+	  		<%= f.label :rating_2, '2', class: 'btn btn-info' %>
+	  		<%= f.radio_button :rating, 3, class: 'rating' %>
+	  		<%= f.label :rating_3, '3', class: 'btn btn-info' %>
+	  		<%= f.radio_button :rating, 4, class: 'rating' %>
+	  		<%= f.label :rating_4, '4', class: 'btn btn-info' %>
+	  		<%= f.radio_button :rating, 5, class: 'rating' %>
+			<%= f.label :rating_5, '5', class: 'btn btn-info' %>
 	  	</div>
 
 	  	<div>

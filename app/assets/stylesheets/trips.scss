@@ -80,3 +80,17 @@ section{
 .desc{
 	border: 1px solid black;
 }
+.rating{
+	position:absolute;
+    margin-left:-9999px;
+    visibility:hidden;
+}
+
+input[type=radio] + label{
+	border:1px solid black;
+	
+}
+
+input[type=radio]:checked + label{
+	border: 5px solid red;
+}

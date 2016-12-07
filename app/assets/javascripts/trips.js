@@ -30,7 +30,7 @@ $(document).on('turbolinks:load', function(){
 function createTrip(){
 	$('#js-trip-form').submit(function(){
 		var tripLoc = $('#location').val();
-		var rating = $('#rating').val();
+		var rating = $('input[class=rating]:checked').val();
 		var start = $('#start_date').val();
 		start = start.split("-").reverse().join("/");
 		var end = $('#end_date').val();
@@ -88,7 +88,7 @@ function showDescription(){
 		$("#closeout").removeClass('hide');
 		var title = $(this).text();
 
-		var desc = $(this).siblings().text();
+		var desc = $(this).next().text();
 		var html = "<h4>" + title + "</h4>" + desc
 		$("#new-sum").html(html);
 		$("#orig-sum").hide();
