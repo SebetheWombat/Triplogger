@@ -62,8 +62,11 @@ $(document).on('turbolinks:load', function(){
 				$("#slide-startdate").text(`${sdate[1]}/${sdate[2]}/${sdate[0]} -`);
 				$("#slide-enddate").text(` ${edate[1]}/${edate[2]}/${edate[0]}`);
 			}
-				
-			$("#slide-summary").text(m.summary);
+			var slideText = m.summary
+			if(slideText.length > 300){
+				slideText = slideText.substring(0, 300) + "...";
+			}
+			$("#slide-summary").text(slideText);
 			$("#slide-link").attr("href", `/trips/${m.id}`);
 		});
 

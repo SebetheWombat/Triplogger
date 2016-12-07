@@ -54,14 +54,19 @@ function addActivity(){
 		$(this).find('.hidden').val(category);
 		$(this).parent().addClass('hide');
 		var title = $(this).find('.title').val()
+
 		console.log(title);
 		if(title === ""){
 			title = "Untitled";
 		}
-		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><p class='desc hide'>"+$(this).find('.description').val()+"</p></div>");
+		var slideText = $(this).find('.description').val()
+			if(slideText.length > 300){
+				slideText = slideText.substring(0, 300) + "...";
+			}
+		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><p class='desc hide'>"+slideText+"</p></div>");
 		setTimeout(function(){
 			$('.title').val("");
-			$('.desc').val("");
+			$('.description').val("");
 		});
 	});
 }
@@ -69,10 +74,11 @@ function addActivity(){
 function uploadPhoto(){
 	$('.photo-form').submit(function(){
 		console.log("SUCH A PRETTY PICTURE!");
-		addPreviewThumbnail()
+		
 		setTimeout(function(){
 			$('.photo-form')[0].reset();
-		});
+			addPreviewThumbnail();
+		},1000);
 	});
 }
 
@@ -81,6 +87,7 @@ function showDescription(){
 		$("#new-sum").show();
 		$("#closeout").removeClass('hide');
 		var title = $(this).text();
+
 		var desc = $(this).siblings().text();
 		var html = "<h4>" + title + "</h4>" + desc
 		$("#new-sum").html(html);
@@ -114,18 +121,36 @@ function displayCategories(){
 function showPreviewDescription(){
 	$('#activityPreview').on('click', '.prevact', function(){
 		console.log("Show Preview Description");
+
 		$(this).find('.desc').toggleClass('hide');
 	});
 }
 
 function addPreviewThumbnail(){
-	var img = $('.image').val();
+	console.log("HI");
 
-
-	 //var html = "<img src=" + gon.image[0].url + ">"
-	 //$('#photoPreview').append(html);
+	$.ajax({
+		type: "GET",
+		url: "/photosurl",
+		success: doTheThing,
+		error: errorThing
+	});
+ 
 }
 
+function doTheThing(response){
+	console.log("Success!!!!!");
+	console.log(response);
+
+	var img = response.photo;
+	var html = "<img src=" + img + ">";
+	$('#photoPreview').append(html);
+}
+
+function errorThing(err){
+	console.log("FAIL");
+	console.log(err);
+}
 
 
 

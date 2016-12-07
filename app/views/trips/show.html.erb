@@ -35,7 +35,11 @@
 				<div>
 					<p class="activity">
 						<p class="act-category"><b><%= activity.category %>:</b></p>
-						<p class="act-title"><%= activity.title %></p>
+						<% if activity.title != ""%>
+							<p class="act-title"><%= activity.title %></p>
+						<%else%>
+							<p class="act-title">Untitled</p>
+						<%end%>
 						<p class="activity-description hide" > <%= activity.description %></p>
 					</p>
 				</div>

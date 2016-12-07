@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+
 	def new
 		@my_photo = Photo.new
 	end
@@ -11,9 +12,9 @@ class PhotosController < ApplicationController
 
 	def imageUrl
 		@my_trip = Trip.last
-		@my_photo = @my_trip.photos.last.image.url
+		@my_photo = @my_trip.photos.last.image.url(:thumb)
 
-		render json: @my_photo
+		render json: {photo: @my_photo}
 	end
 
 	private
