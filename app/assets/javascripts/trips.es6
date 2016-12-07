@@ -128,14 +128,12 @@ function showPreviewDescription(){
 
 function addPreviewThumbnail(){
 	console.log("HI");
-
 	$.ajax({
 		type: "GET",
 		url: "/photosurl",
 		success: doTheThing,
 		error: errorThing
 	});
- 
 }
 
 function doTheThing(response){

@@ -36,7 +36,7 @@ section{
 	height:50px;
 }
 #scrollbar-images img{
-	border-radius: 100%;
+
 	margin:15px 3px;
 }
 #scrollbar-images img:hover{
@@ -93,4 +93,7 @@ input[type=radio] + label{
 
 input[type=radio]:checked + label{
 	border: 5px solid red;
+}
+.js-actlink:hover{
+	cursor:pointer;
 }
