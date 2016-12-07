@@ -87,13 +87,17 @@ section{
 }
 
 input[type=radio] + label{
-	border:1px solid black;
+	border:1px solid #000;
 	
 }
 
 input[type=radio]:checked + label{
-	border: 5px solid red;
+	border: 5px solid #f00;
 }
 .js-actlink:hover{
 	cursor:pointer;
+}
+.alert{
+	width:100%;
+	background: #f98b8b;
 }

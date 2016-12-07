@@ -2,12 +2,16 @@
 // All this logic will automatically be available in application.js.
 $(document).on('turbolinks:load', function(){
 	console.log("Trips");
+	//var place = "";
 	$('#location').keypress(function(){
 		var input = /** @type {!HTMLInputElement} */(
             document.getElementById('location'));
-		console.log(input);
+
 		var autocomplete = new google.maps.places.Autocomplete(input);
+		//place = autocomplete.getPlace();
+		//console.log(autocomplete.getPlace());
 	});
+
 	$('.js-actlink').click(function(){
 		console.log("link clicked");
 		$(this).siblings().toggleClass('hide');
@@ -28,22 +32,37 @@ $(document).on('turbolinks:load', function(){
 });
 
 function createTrip(){
-	$('#js-trip-form').submit(function(){
+	$('#js-trip-form').submit(function(e){
+		e.preventDefault();
 		var tripLoc = $('#location').val();
-		var rating = $('input[class=rating]:checked').val();
-		var start = $('#start_date').val();
-		start = start.split("-").reverse().join("/");
-		var end = $('#end_date').val();
-		if(end !== ""){
-			end = " - " + end.split("-").reverse().join("/");
-		}
-		$('#tripPreview').append(`<p>${tripLoc}</p>`)
-		$('#tripPreview').append(`<p>${rating}</p>`)
-		$('#tripPreview').append(`<p>${start}${end}</p>`);
 
-		$(this).hide();
-		$('#js-activities-form').show();
-		console.log("SUBMITTED!");
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({'address': tripLoc}, function(results, status){
+			if(results[0] === undefined){
+				var msg = "We're sorry. We're not able to find '" + tripLoc + "' anywhere on the map.";
+
+				$('.container').prepend("<div class='alert'>" + msg + "</div>");
+
+			}else{
+				console.log("this should only appear once");
+				$('#js-trip-form').unbind().submit();
+				var rating = $('input[class=rating]:checked').val();
+				var start = $('#start_date').val();
+				start = start.split("-").reverse().join("/");
+				var end = $('#end_date').val();
+				if(end !== ""){
+					end = " - " + end.split("-").reverse().join("/");
+				}
+				$('#tripPreview').append(`<p>${tripLoc}</p>`)
+				$('#tripPreview').append(`<p>${rating}</p>`)
+				$('#tripPreview').append(`<p>${start}${end}</p>`);
+
+				$('#js-trip-form').hide();
+				$('#js-activities-form').show();
+				$(".alert").remove();
+				console.log("SUBMITTED!");
+			}
+		});
 	});
 }
 
@@ -78,7 +97,7 @@ function uploadPhoto(){
 		setTimeout(function(){
 			$('.photo-form')[0].reset();
 			addPreviewThumbnail();
-		},1000);
+		},5000);
 	});
 }
 
@@ -87,7 +106,6 @@ function showDescription(){
 		$("#new-sum").show();
 		$("#closeout").removeClass('hide');
 		var title = $(this).text();
-
 		var desc = $(this).next().text();
 		var html = "<h4>" + title + "</h4>" + desc
 		$("#new-sum").html(html);
