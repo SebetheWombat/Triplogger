@@ -7,7 +7,7 @@
 
 	<div>
 		<%= f.label :image %>
-		<%= f.file_field :image, class: "image" %>
+		<%= f.file_field :image, multiple: true, class: "image" %>
 	</div>
 
 	<%= f.button 'Upload' %>
