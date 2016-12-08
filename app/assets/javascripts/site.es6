@@ -76,21 +76,46 @@ $(document).on('turbolinks:load', function(){
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({'address': m.location}, function(results, status){
 			console.log(status);
-			var lat = results[0].geometry.location.lat();
-			var lng = results[0].geometry.location.lng()
-			if(status === 200 || status === "OK"){
-				createMarker({lat: lat, lng: lng}, m, map);
-			}else{
-				console.log('Geocode was not successful for the following reason: ' + status);
+			if(results !== null && results[0] !== undefined){
+				var lat = results[0].geometry.location.lat();
+				var lng = results[0].geometry.location.lng()
+				if(status === 200 || status === "OK"){
+					
+						createMarker({lat: lat, lng: lng}, m, map);
+					
+					
+				}else{
+					console.log('Geocode was not successful for the following reason: ' + status);
+				}
 			}
+			
 		});
 	}
 	console.log(gon.markers);
-	gon.markers.forEach(function(m){
-		if(m.location != ""){
-			console.log(m.location);
-			geocodeAddress(map, m);
+	var marks = gon.markers;
+	
+	for(var i = 0; i< marks.length; i++){
+	
+		if(marks[i].location != ""){
+			setTimeout(
+				(function(m){
+					return function(){
+						console.log(m.location)
+						geocodeAddress(map, m);
+					}
+				})(marks[i]), 150 * i);
 		}
-	});
+	}
+
+
   }
+
+
+
+
+
+
+
+
+
 
