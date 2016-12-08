@@ -16,7 +16,6 @@ $(document).on('turbolinks:load', function(){
 	createTrip();
 	addActivity();
 	uploadPhoto();
-	
 	showPreviewDescription();
 	showDescription();
 	replaceImage();
@@ -37,12 +36,12 @@ function createTrip(){
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({'address': tripLoc}, function(results, status){
 			if(results[0] === undefined){
+				$(".alert").remove();
 				var msg = "We're sorry. We're not able to find '" + tripLoc + "' anywhere on the map.";
 
 				$('.container').prepend("<div class='alert'>" + msg + "</div>");
 
 			}else{
-				console.log("this should only appear once");
 				$('#js-trip-form').unbind().submit();
 				var rating = $('input[class=rating]:checked').val();
 				var start = $('#start_date').val();
@@ -93,7 +92,7 @@ function addActivity(){
 function uploadPhoto(){
 	$('.photo-form').submit(function(){
 		console.log("SUCH A PRETTY PICTURE!");
-		
+		$('#photoPreviewThumbs').append("Loading photos...");
 		setTimeout(function(){
 			$('.photo-form')[0].reset();
 			addPreviewThumbnail();
@@ -117,7 +116,8 @@ function showDescription(){
 function replaceImage(){
 	$('.thumb').click(function(){
 		var imgSrc = $(this).attr("src")
-		$('#main-show').attr("src", $(this).attr("src"));
+		imgSrc = imgSrc.replace('thumb', 'original');
+		$('#main-show').attr("src", imgSrc);
 		console.log($(this).attr("src"));
 	});
 }
@@ -159,9 +159,10 @@ function doTheThing(response){
 	console.log(response);
 
 	var img = response.photoArr
+	$('#photoPreviewThumbs').html("");
 	img.forEach(function(photo){
 		var html = "<img src=" + photo + ">";
-		$('#photoPreview').append(html);
+		$('#photoPreviewThumbs').append(html);
 	});
 }
 
@@ -177,14 +178,12 @@ function scrolling(){
 		if(x < pics * 15){
 			x += 250;
 		}
-		
 		$("#scrollbar-images").scrollLeft(x);
 	});
 	$("#scroll-right").on('click', function(){
 		if(x > 0){
 			x -= 250
 		}
-		
 		$("#scrollbar-images").scrollLeft(x);
 	});
 }

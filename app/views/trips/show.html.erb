@@ -1,3 +1,4 @@
+
 <div class="show-container">
 	<div id="show-location">
 		<h3><%= @my_trip.location %>
@@ -22,7 +23,7 @@
 				<div id="scroll-right" class="btn btn-primary scroll-btn" data-pics=<%= @my_trip.photos.length %>> &#8592; </div>
 				<div id="scrollbar-images">
 					<% @my_trip.photos.each do |photo| %>
-						<%= image_tag(photo.image.url, class: "img-responsive rounded thumb") %>
+						<%= image_tag(photo.image.url(:thumb), class: "img-responsive rounded thumb") %>
 					<%end%>
 				</div>
 				<div id="scroll-left" class="btn btn-primary scroll-btn" data-pics=<%= @my_trip.photos.length %>> &#8594; </div>
@@ -58,3 +59,6 @@
 		</div>
 	</section>
 </div>
+
+
+

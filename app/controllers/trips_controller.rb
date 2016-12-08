@@ -17,7 +17,9 @@ class TripsController < ApplicationController
 	end
 
 	def show
-		@my_trip = Trip.find(params[:id])
+		@my_trip = current_user.trips.find(params[:id])
+	rescue ActiveRecord::RecordNotFound
+		redirect_to("/", alert: "That is not your trip");
 	end
 
 	def trip_params

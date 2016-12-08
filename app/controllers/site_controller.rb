@@ -8,7 +8,7 @@ class SiteController < ApplicationController
 			current_user.trips.each do |trip|
 				markers.push(trip)
 				if trip.photos.length > 0
-					photos.push({id: trip.id, img: trip.photos[0].image.url})
+					photos.push({id: trip.id, img: trip.photos[0].image.url(:medium)})
 				end
 			end
 

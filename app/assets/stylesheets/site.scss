@@ -22,12 +22,15 @@ body, html{
 	right: 0;
 	background: #eff3f9;
 	transition: 0.5s;
+	padding-top:15px;
 }
 #slide-summary{
 	min-height:100px;
-	max-height: 200px;
+	max-height: 225px;
 	overflow: hidden;
 	border: 1px solid #666;
+	padding: 15px;
+	text-align: justify;
 
 }
 .tripinfo{

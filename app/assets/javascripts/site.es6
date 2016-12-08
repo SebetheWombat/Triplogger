@@ -7,7 +7,6 @@ function initMap (from) {
 	if (from !== "our code") {
 		googleIsReady = true;
 	}
-
 	if ($("#map-canvas").length > 0 && googleIsReady) {
 		initMapForRealForReal();
 	}
@@ -18,15 +17,12 @@ $(document).on('turbolinks:load', function(){
 	$("#slide-trip").click(function(){
 		$(this).css("width","0");
 	});
-
 	// for when you click around and return to home page
 	initMap("our code");
 });
 
   var map;
-
   function initMapForRealForReal() {
-
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: {lat: 20, lng: 0},
       zoom: 2
@@ -51,7 +47,7 @@ $(document).on('turbolinks:load', function(){
 					$("#slide-image img").attr("src", photo.img);
 				}
 			});
-			$("#slide-trip").css("width", "500px");
+			$("#slide-trip").css("width", "400px");
 			$("#slide-location").text(m.location);
 			if(m.start_date != null && m.end_date != null){
 				var sdate = m.start_date.split("T");
@@ -80,10 +76,7 @@ $(document).on('turbolinks:load', function(){
 				var lat = results[0].geometry.location.lat();
 				var lng = results[0].geometry.location.lng()
 				if(status === 200 || status === "OK"){
-					
-						createMarker({lat: lat, lng: lng}, m, map);
-					
-					
+					createMarker({lat: lat, lng: lng}, m, map);
 				}else{
 					console.log('Geocode was not successful for the following reason: ' + status);
 				}
@@ -93,9 +86,7 @@ $(document).on('turbolinks:load', function(){
 	}
 	console.log(gon.markers);
 	var marks = gon.markers;
-	
 	for(var i = 0; i< marks.length; i++){
-	
 		if(marks[i].location != ""){
 			setTimeout(
 				(function(m){
@@ -103,11 +94,9 @@ $(document).on('turbolinks:load', function(){
 						console.log(m.location)
 						geocodeAddress(map, m);
 					}
-				})(marks[i]), 150 * i);
+				})(marks[i]), 300 * i);
 		}
 	}
-
-
   }
 
 
