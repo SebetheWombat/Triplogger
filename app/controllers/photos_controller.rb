@@ -7,18 +7,26 @@ class PhotosController < ApplicationController
 	def create
 		
 		@my_trip = Trip.last
-		params[:photo][:image].each do |img|
-		  @my_photo = @my_trip.photos.new(image: img)
-		  @my_photo.save
+		if params[:photo] != nil 
+			params[:photo][:image].each do |img|
+			  @my_photo = @my_trip.photos.new(image: img)
+			  @my_photo.save
+			end
 		end
 		# @my_photo = @my_trip.photos.create(photo_params)
 	end
 
 	def imageUrl
 		@my_trip = Trip.last
-		@my_photo = @my_trip.photos.last.image.url(:thumb)
+		@my_photos = @my_trip.photos
 
-		render json: {photo: @my_photo}
+		@photosArr = []
+
+		@my_photos.each do |photo|
+			@photosArr.push(photo.image.url(:thumb))
+		end
+
+		render json: {photoArr: @photosArr}
 	end
 
 	private

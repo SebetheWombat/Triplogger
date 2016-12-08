@@ -158,9 +158,11 @@ function doTheThing(response){
 	console.log("Success!!!!!");
 	console.log(response);
 
-	var img = response.photo;
-	var html = "<img src=" + img + ">";
-	$('#photoPreview').append(html);
+	var img = response.photoArr
+	img.forEach(function(photo){
+		var html = "<img src=" + photo + ">";
+		$('#photoPreview').append(html);
+	});
 }
 
 function errorThing(err){
