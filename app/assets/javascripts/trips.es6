@@ -2,14 +2,11 @@
 // All this logic will automatically be available in application.js.
 $(document).on('turbolinks:load', function(){
 	console.log("Trips");
-	//var place = "";
 	$('#location').keypress(function(){
 		var input = /** @type {!HTMLInputElement} */(
             document.getElementById('location'));
 
 		var autocomplete = new google.maps.places.Autocomplete(input);
-		//place = autocomplete.getPlace();
-		//console.log(autocomplete.getPlace());
 	});
 
 	$('.js-actlink').click(function(){
@@ -29,6 +26,7 @@ $(document).on('turbolinks:load', function(){
 		$("#new-sum").hide();
 		$(this).addClass('hide');
 	});
+	scrolling();
 });
 
 function createTrip(){
@@ -170,7 +168,24 @@ function errorThing(err){
 	console.log(err);
 }
 
-
+function scrolling(){
+	var x = 0;
+	$("#scroll-left").on('click', function(){
+		var pics = $(this).data("pics");
+		if(x < pics * 15){
+			x += 250;
+		}
+		
+		$("#scrollbar-images").scrollLeft(x);
+	});
+	$("#scroll-right").on('click', function(){
+		if(x > 0){
+			x -= 250
+		}
+		
+		$("#scrollbar-images").scrollLeft(x);
+	});
+}
 
 
 

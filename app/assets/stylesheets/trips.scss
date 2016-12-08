@@ -34,10 +34,15 @@ section{
 
 #scrollbar-images{
 	height:50px;
+	width:50%;
+	white-space: nowrap;
+	overflow: scroll;
+	margin:15px auto;
 }
 #scrollbar-images img{
-
-	margin:15px 3px;
+	
+	margin-left: 10px;
+	//margin:15px 3px;
 }
 #scrollbar-images img:hover{
 	cursor:pointer;
@@ -135,4 +140,10 @@ input[type=radio]:checked + label{
 }
 #activity-header{
 	margin-bottom:25px;
+}
+#scrollbar-images{
+	display: inline-block;
+}
+.scroll-btn{
+	margin-top: -70px;
 }

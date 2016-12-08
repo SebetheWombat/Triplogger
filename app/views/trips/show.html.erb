@@ -18,11 +18,14 @@
 			<div id="main-image">
 					<%= image_tag(@my_trip.photos[0].image.url, class: "img-responsive", id: "main-show") %>
 			</div>
-			
-			<div id="scrollbar-images">
-				<% @my_trip.photos.each do |photo| %>
-					<%= image_tag(photo.image.url, class: "img-responsive rounded thumb") %>
-				<%end%>
+			<div id="image-thing">
+				<div id="scroll-right" class="btn btn-primary scroll-btn" data-pics=<%= @my_trip.photos.length %>> &#8592; </div>
+				<div id="scrollbar-images">
+					<% @my_trip.photos.each do |photo| %>
+						<%= image_tag(photo.image.url, class: "img-responsive rounded thumb") %>
+					<%end%>
+				</div>
+				<div id="scroll-left" class="btn btn-primary scroll-btn" data-pics=<%= @my_trip.photos.length %>> &#8594; </div>
 			</div>
 		<%end%>
 	</div>

@@ -5,13 +5,12 @@ body, html{
 	height: 100%;
 }
 #map-container{
-	height: 95%;
+	height: 85%;
 }
 
 #map-canvas{
 	height: 100%;
 	width: 100%;
-
 }
 
 #slide-trip{
@@ -28,8 +27,6 @@ body, html{
 	min-height:100px;
 	max-height: 200px;
 	overflow: hidden;
-    //white-space: nowrap;
-    //text-overflow: ellipsis;
 	border: 1px solid #666;
 
 }
