@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function(){
 		$(this).addClass('hide');
 	});
 	scrolling();
+	updateAction();
 });
 
 function createTrip(){
@@ -94,12 +95,11 @@ function addActivity(){
 
 function uploadPhoto(){
 	$('.photo-form').submit(function(){
-		console.log("SUCH A PRETTY PICTURE!");
 		$('#photoPreviewThumbs').append("Loading photos...");
 		setTimeout(function(){
 			$('.photo-form')[0].reset();
 			addPreviewThumbnail();
-		},5000);
+		},6000);
 	});
 }
 
@@ -191,6 +191,10 @@ function scrolling(){
 	});
 }
 
-
+function updateAction(){
+	$(".toggleForm").click(function(){
+		$(this).children('div').toggleClass('hide');
+	});
+}
 
 

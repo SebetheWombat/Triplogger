@@ -1,76 +1,84 @@
 <div class = "container">
 <div class="half">
-<%= form_for @my_trip do |f| %>
-		<h3>Trip Details</h3>
-		<div class="form-group row">
-			<%= f.label :location, class: "col-md-2 col-form-label" %>
-			<div class="col-md-10">
-	  			<%= f.text_field :location, class: 'form-control' %>
-	  		</div>
-	  	</div>
+	<h3>Change Trip Details</h3>
+	<div>
+		<%= form_for @my_trip do |f| %>
+			<div class="form-group row">
+				<%= f.label :location, class: "col-md-2 col-form-label" %>
+				<div class="col-md-10">
+		  			<%= f.text_field :location, class: 'form-control' %>
+		  		</div>
+		  	</div>
 
-	  	<div class="form-group row">
-	  		
-	  		<%= f.label :rating, class: "col-md-2 col-form-label" %>
-	  		
-	  		<div class="col-md-10">
-	  		<%= f.radio_button :rating, 1, class: 'rating' %>
-	  		<%= f.label :rating_1, '1', class: 'btn btn-info col-md-2' %>
-	  		<%= f.radio_button :rating, 2, class: 'rating' %>
-	  		<%= f.label :rating_2, '2', class: 'btn btn-info col-md-2' %>
-	  		<%= f.radio_button :rating, 3, class: 'rating' %>
-	  		<%= f.label :rating_3, '3', class: 'btn btn-info col-md-2' %>
-	  		<%= f.radio_button :rating, 4, class: 'rating' %>
-	  		<%= f.label :rating_4, '4', class: 'btn btn-info col-md-2' %>
-	  		<%= f.radio_button :rating, 5, class: 'rating' %>
-			<%= f.label :rating_5, '5', class: 'btn btn-info col-md-2' %>
-			
-			</div>
-	  	</div>
+		  	<div class="form-group row">
+		  		
+		  		<%= f.label :rating, class: "col-md-2 col-form-label" %>
+		  		
+		  		<div class="col-md-10">
+		  		<%= f.radio_button :rating, 1, class: 'rating' %>
+		  		<%= f.label :rating_1, '1', class: 'btn btn-info col-md-2' %>
+		  		<%= f.radio_button :rating, 2, class: 'rating' %>
+		  		<%= f.label :rating_2, '2', class: 'btn btn-info col-md-2' %>
+		  		<%= f.radio_button :rating, 3, class: 'rating' %>
+		  		<%= f.label :rating_3, '3', class: 'btn btn-info col-md-2' %>
+		  		<%= f.radio_button :rating, 4, class: 'rating' %>
+		  		<%= f.label :rating_4, '4', class: 'btn btn-info col-md-2' %>
+		  		<%= f.radio_button :rating, 5, class: 'rating' %>
+				<%= f.label :rating_5, '5', class: 'btn btn-info col-md-2' %>
+				
+				</div>
+		  	</div>
 
-	  	<div class="form-group row">
-	  		<%= f.label :dates, class: "col-md-2 col-form-label" %>
-	  		<div class="col-md-5">
-	  			<%= f.date_field :start_date, class: 'form-control' %>
-	  		</div>
-	  		
-	  		<div class="col-md-5">
-	  			<%= f.date_field :end_date, class: 'form-control' %>
-	  		</div>
-	  	</div>
+		  	<div class="form-group row">
+		  		<%= f.label :dates, class: "col-md-2 col-form-label" %>
+		  		<div class="col-md-5">
+		  			<%= f.date_field :start_date, class: 'form-control' %>
+		  		</div>
+		  		
+		  		<div class="col-md-5">
+		  			<%= f.date_field :end_date, class: 'form-control' %>
+		  		</div>
+		  	</div>
 
-	  	<div class="form-group row">
-	  		<%= f.label :summary, class: "col-md-2 col-form-label" %>
-	  		<div class="col-md-10">
-	  			<%= f.text_area :summary, class: 'form-control textbox' %>
-	  		</div>
-	  	</div>
+		  	<div class="form-group row">
+		  		<%= f.label :summary, class: "col-md-2 col-form-label" %>
+		  		<div class="col-md-10">
+		  			<%= f.text_area :summary, class: 'form-control textbox' %>
+		  		</div>
+		  	</div>
 
-	  	<%= f.button %>
-	<% end %>
+		  	<%= f.button "Update Trip", class: "tripUpdate" %>
+		<% end %>
+	</div>
 </div>
 <div class="half">
-	<h3>Activity Details</h3>
-	<% @my_trip.activities.each do |activity| %>
-		<%= form_for activity, html: {class: "activity-form"} do |f| %>
+	<h3>Change Activity Details</h3>
+	<div>
+		<% @my_trip.activities.each do |activity| %>
+			<div class = "toggleForm"><h5 class=" btn btn-link"><%= activity.title %></h5>
+				<div class="hide">
+					<%= form_for activity, html: {class: "activity-form"} do |f| %>
 
-		<div class="form-group row">
-			<%= f.label :title, class: "col-md-2 col-form-label" %>
-			<div class="col-md-8">
-				<%= f.text_field :title, class: "title form-control" %>
+						<div class="form-group row">
+							<%= f.label :title, class: "col-md-2 col-form-label" %>
+							<div class="col-md-8">
+								<%= f.text_field :title, class: "title form-control" %>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<%= f.label :description, class: "col-md-2 col-form-label" %>
+							<div class="col-md-8">
+								<%= f.text_area :description, class: "description form-control" %>
+							</div>
+						</div>
+
+						<%= f.button "Update Activity", class: "actBtn" %>
+					<%end%>	
+				</div>
 			</div>
-		</div>
 
-		<div class="form-group row">
-			<%= f.label :description, class: "col-md-2 col-form-label" %>
-			<div class="col-md-8">
-				<%= f.text_area :description, class: "description form-control" %>
-			</div>
-		</div>
-
-		<%= f.button "Update Activity", class: "actBtn" %>
 	<%end%>
-		
-	<%end%>
+	</div>
 </div>
 </div>
