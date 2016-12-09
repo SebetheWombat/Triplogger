@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20161202145327) do
 
   create_table "trips", force: :cascade do |t|
     t.string   "location"
+    t.decimal  "lat"
+    t.decimal  "long"
     t.integer  "rating"
     t.datetime "start_date"
     t.datetime "end_date"

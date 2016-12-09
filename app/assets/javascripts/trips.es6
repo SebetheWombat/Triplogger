@@ -32,16 +32,20 @@ function createTrip(){
 	$('#js-trip-form').submit(function(e){
 		e.preventDefault();
 		var tripLoc = $('#location').val();
-
+		var done = false;
 		var geocoder = new google.maps.Geocoder();
 		geocoder.geocode({'address': tripLoc}, function(results, status){
-			if(results[0] === undefined){
+			if(results === null || results[0] === undefined){
 				$(".alert").remove();
 				var msg = "We're sorry. We're not able to find '" + tripLoc + "' anywhere on the map.";
-
 				$('.container').prepend("<div class='alert'>" + msg + "</div>");
 
 			}else{
+				var lat = results[0].geometry.location.lat();
+				var long = results[0].geometry.location.lng()
+				$("#form-lat").val(lat);
+				console.log($("#form-lat").val());
+				$("#form-long").val(long);
 				$('#js-trip-form').unbind().submit();
 				var rating = $('input[class=rating]:checked').val();
 				var start = $('#start_date').val();
@@ -54,7 +58,6 @@ function createTrip(){
 				if(rating !== undefined){
 					$('#tripPreview').append(`<p>Rating: ${rating}</p>`)
 				}
-				
 				$('#tripPreview').append(`<p>${start}${end}</p>`);
 				$('#js-trip-form').hide();
 				$('#js-activities-form').show();

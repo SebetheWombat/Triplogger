@@ -1,7 +1,11 @@
 // Place all the styles related to the trips controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.container{
+	width: 80%;
+    margin: 15px auto;
+    text-align: center;
+}
 .hide{
 	display: none;
 }
@@ -10,7 +14,7 @@
 	text-align:center;
 	margin:0 auto;
 	width:80%;
-	
+
 }
 
 #activities{
@@ -152,4 +156,13 @@ input[type=radio]:checked + label{
 }
 .scroll-btn{
 	margin-top: -70px;
+}
+.half{
+	margin-left:20px;
+}
+.textbox{
+	height:150px;
+}
+.actBtn{
+	margin-bottom:30px;
 }

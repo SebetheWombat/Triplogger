@@ -6,7 +6,7 @@ class PhotosController < ApplicationController
 
 	def create
 		
-		@my_trip = Trip.last
+		@my_trip = current_user.trips.last
 		if params[:photo] != nil 
 			params[:photo][:image].each do |img|
 			  @my_photo = @my_trip.photos.new(image: img)

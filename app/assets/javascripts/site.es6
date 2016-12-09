@@ -27,15 +27,16 @@ $(document).on('turbolinks:load', function(){
       center: {lat: 20, lng: 0},
       zoom: 2
     });
-    function createMarker(coords,m, map){
+    
+function createMarker(coords, m, map){
 		var marker = new google.maps.Marker({
 			position: coords,
 			map: map
 		});
 		
-		//marker.set("id", m.id);
 		google.maps.event.addListener(marker, 'click', function(){
-			console.log(m.location);
+			console.log("high m ");
+			console.log(m);
 			console.log(gon.photos);
 			//Reset sidebar values
 			$("#slide-image img").attr("src", "");
@@ -58,9 +59,13 @@ $(document).on('turbolinks:load', function(){
 				$("#slide-startdate").text(`${sdate[1]}/${sdate[2]}/${sdate[0]} -`);
 				$("#slide-enddate").text(` ${edate[1]}/${edate[2]}/${edate[0]}`);
 			}
-			var slideText = m.summary
-			if(slideText.length > 300){
-				slideText = slideText.substring(0, 300) + "...";
+			console.log("in create markers scope");
+			console.log(m)
+			if(m.summary != ""){
+				var slideText = m.summary
+				if(slideText.length > 275){
+					slideText = slideText.substring(0, 275) + "...";
+				}
 			}
 			$("#slide-summary").text(slideText);
 			$("#slide-link").attr("href", `/trips/${m.id}`);
@@ -68,38 +73,18 @@ $(document).on('turbolinks:load', function(){
 
 	}
 	
-	function geocodeAddress(map, m){
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({'address': m.location}, function(results, status){
-			console.log(status);
-			if(results !== null && results[0] !== undefined){
-				var lat = results[0].geometry.location.lat();
-				var lng = results[0].geometry.location.lng()
-				if(status === 200 || status === "OK"){
-					createMarker({lat: lat, lng: lng}, m, map);
-				}else{
-					console.log('Geocode was not successful for the following reason: ' + status);
-				}
-			}
-			
-		});
-	}
 	console.log(gon.markers);
 	var marks = gon.markers;
 	for(var i = 0; i< marks.length; i++){
 		if(marks[i].location != ""){
-			setTimeout(
-				(function(m){
-					return function(){
-						console.log(m.location)
-						geocodeAddress(map, m);
-					}
-				})(marks[i]), 300 * i);
+			var lat = parseFloat(marks[i].lat)
+			console.log("lat: " + lat);
+			var long = parseFloat(marks[i].long)
+			createMarker({lat: lat, lng: long}, marks[i], map);
+
 		}
 	}
   }
-
-
 
 
 
