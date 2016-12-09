@@ -55,7 +55,7 @@
 	<h3>Change Activity Details</h3>
 	<div>
 		<% @my_trip.activities.each do |activity| %>
-			<div class = "toggleForm"><h5 class=" btn btn-link"><%= activity.title %></h5>
+			<div><h5 class="toggleForm btn btn-link">Edit <%= activity.title %></h5><span><%= link_to("Delete this activity", activity_path(activity.id), method: "delete") %></span>
 				<div class="hide">
 					<%= form_for activity, html: {class: "activity-form"} do |f| %>
 
@@ -79,6 +79,18 @@
 			</div>
 
 	<%end%>
+	<div>
+				<p class="js-actlink" >+ Add Activity</p>
+				<div class= "actform hide" data-category="activity">
+					<%= render "activityform" %>
+				</div>
+			</div>
 	</div>
+	<h3>Change Photos</h3>
+	<% @my_trip.photos.each do |photo| %>
+		<div><%= image_tag(photo.image.url(:thumb)) %> <%= link_to("Delete this photo", photo_path(photo.id), method: "delete")%></div>
+	<%end%>
+	<h3>Add More Photos</h3>
+	<%= render "photoform" %>
 </div>
 </div>

@@ -193,7 +193,7 @@ function scrolling(){
 
 function updateAction(){
 	$(".toggleForm").click(function(){
-		$(this).children('div').toggleClass('hide');
+		$(this).siblings('div').toggleClass('hide');
 	});
 }
 

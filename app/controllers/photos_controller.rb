@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
 	end
 
 	def imageUrl
-		@my_trip = Trip.last
+		@my_trip = current_user.trips.last
 		@my_photos = @my_trip.photos
 
 		@photosArr = []
@@ -27,6 +27,15 @@ class PhotosController < ApplicationController
 		end
 
 		render json: {photoArr: @photosArr}
+	end
+
+
+	def destroy
+		@my_photo = Photo.find(params[:id])
+		@my_trip = @my_photo.trip
+		@my_photo.destroy
+
+		redirect_to(edit_trip_path(@my_trip))
 	end
 
 	private
