@@ -1,14 +1,9 @@
 <div class = "container">
 <div class="half">
 	<h3>Change Trip Details</h3>
+	<h5><%= @my_trip.location %></h5>
 	<div>
 		<%= form_for @my_trip do |f| %>
-			<div class="form-group row">
-				<%= f.label :location, class: "col-md-2 col-form-label" %>
-				<div class="col-md-10">
-		  			<%= f.text_field :location, class: 'form-control' %>
-		  		</div>
-		  	</div>
 
 		  	<div class="form-group row">
 		  		
@@ -103,7 +98,7 @@
 </div>
 <div class="updateTripThings col-md-12">
 	<h5>Newly Added Images</h5>
-	<div class="photoPreviewThumbs"></div>
+	<div class="photoPreviewThumbs" data-num-photos = "<%=@my_trip.photos.length %>" </div>
 </div>
 </div>
 

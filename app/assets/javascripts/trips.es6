@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 $(document).on('turbolinks:load', function(){
 	console.log("Trips");
+	$('.photoPreviewThumbs').html("");
 	$('#location').keypress(function(){
 		var input = /** @type {!HTMLInputElement} */(
             document.getElementById('location'));
@@ -95,7 +96,7 @@ function addActivity(){
 
 function uploadPhoto(){
 	$('.photo-form').submit(function(){
-		$('.photoPreviewThumbs').append("Loading photos...");
+		$('.photoPreviewThumbs').append("<p id='photoLoadMsg'>Loading photos...</p>");
 		setTimeout(function(){
 			$('.photo-form')[0].reset();
 			addPreviewThumbnail();
@@ -160,13 +161,25 @@ function addPreviewThumbnail(){
 function doTheThing(response){
 	console.log("Success!!!!!");
 	console.log(response);
-
+	var numPhotos = $(".photoPreviewThumbs").data("numPhotos");
+	console.log("NUMPHOTOS");
+	// numPhotos = Number(numPhotos);
+	console.log(numPhotos);
 	var img = response.photoArr
-	$('.photoPreviewThumbs').html("");
-	img.forEach(function(photo){
-		var html = "<img src=" + photo + ">";
+	
+
+	for(var i = numPhotos; i < img.length; i++){
+		console.log(img[i]);
+		var html = "<img src=" + img[i] + ">";
 		$('.photoPreviewThumbs').append(html);
-	});
+	}
+
+	$("#photoLoadMsg").remove();
+	$(".photoPreviewThumbs").data("numPhotos", img.length);
+	// img.forEach(function(photo){
+	// 	var html = "<img src=" + photo + ">";
+	// 	$('.photoPreviewThumbs').append(html);
+	// });
 }
 
 function errorThing(err){
