@@ -85,17 +85,17 @@ function addActivity(){
 			if(slideText.length > 300){
 				slideText = slideText.substring(0, 300) + "...";
 			}
-		$("#activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><div class='desc hide'>"+slideText+"</div></div>");
+		$(".activityPreview").append("<div class='prevact'><p class='prevTitle'>"+title+"</p><div class='desc hide'>"+slideText+"</div></div>");
 		setTimeout(function(){
-			$('.title').val("");
-			$('.description').val("");
+			$(this).find('.title').val("");
+			$(this).find('.description').val("");
 		});
 	});
 }
 
 function uploadPhoto(){
 	$('.photo-form').submit(function(){
-		$('#photoPreviewThumbs').append("Loading photos...");
+		$('.photoPreviewThumbs').append("Loading photos...");
 		setTimeout(function(){
 			$('.photo-form')[0].reset();
 			addPreviewThumbnail();
@@ -140,7 +140,7 @@ function displayCategories(){
 }
 
 function showPreviewDescription(){
-	$('#activityPreview').on('click', '.prevact', function(){
+	$('.activityPreview').on('click', '.prevact', function(){
 		console.log("Show Preview Description");
 
 		$(this).find('.desc').toggleClass('hide');
@@ -162,10 +162,10 @@ function doTheThing(response){
 	console.log(response);
 
 	var img = response.photoArr
-	$('#photoPreviewThumbs').html("");
+	$('.photoPreviewThumbs').html("");
 	img.forEach(function(photo){
 		var html = "<img src=" + photo + ">";
-		$('#photoPreviewThumbs').append(html);
+		$('.photoPreviewThumbs').append(html);
 	});
 }
 

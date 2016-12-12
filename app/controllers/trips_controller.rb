@@ -27,16 +27,7 @@ class TripsController < ApplicationController
 
 	def update
 		@my_trip = current_user.trips.find(params[:id])
-		#ingredient = Ingredient.new(
-			#name: params[:ingredient][:name],
-			#calories: params[:ingredient][:calories])
 		
-		# if params[:photo] != nil 
-		# 	params[:photo][:image].each do |img|
-		# 	  @my_photo = @my_trip.photos.new(image: img)
-		# 	  @my_photo.save
-		# 	end
-		# end
 		if @my_trip.update(trip_params)
 			redirect_to(trip_path(@my_trip))
 		else

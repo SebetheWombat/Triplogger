@@ -78,19 +78,35 @@
 				</div>
 			</div>
 
-	<%end%>
-	<div>
-				<p class="js-actlink" >+ Add Activity</p>
-				<div class= "actform hide" data-category="activity">
-					<%= render "activityform" %>
-				</div>
+		<%end%>
+		<div>
+			<p class="js-actlink" >+ Add Activity</p>
+			<div class= "actform hide" data-category="activity">
+				<%= render "activityform" %>
 			</div>
+		</div>
+		<div class="updateTripThings col-md-12">
+			<h5>Newly Added Activities</h5>
+			<div class="activityPreview"></div>
+		</div>
 	</div>
 	<h3>Change Photos</h3>
 	<% @my_trip.photos.each do |photo| %>
 		<div><%= image_tag(photo.image.url(:thumb)) %> <%= link_to("Delete this photo", photo_path(photo.id), method: "delete")%></div>
 	<%end%>
-	<h3>Add More Photos</h3>
-	<%= render "photoform" %>
+	<div>
+	<p class="js-actlink">+ Add Photos</p>
+		<div class="hide">
+		<%= render "photoform" %>
+		</div>
+	</div>
+</div>
+<div class="updateTripThings col-md-12">
+	<h5>Newly Added Images</h5>
+	<div class="photoPreviewThumbs"></div>
 </div>
 </div>
+
+
+
+

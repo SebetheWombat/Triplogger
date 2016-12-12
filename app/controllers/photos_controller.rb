@@ -5,23 +5,21 @@ class PhotosController < ApplicationController
 	end
 
 	def create
+		@my_trip = Trip.find(session[:trip_id])
 		
-		@my_trip = current_user.trips.last
 		if params[:photo] != nil 
 			params[:photo][:image].each do |img|
 			  @my_photo = @my_trip.photos.new(image: img)
 			  @my_photo.save
 			end
 		end
-		# @my_photo = @my_trip.photos.create(photo_params)
+		
 	end
 
 	def imageUrl
 		@my_trip = current_user.trips.last
 		@my_photos = @my_trip.photos
-
 		@photosArr = []
-
 		@my_photos.each do |photo|
 			@photosArr.push(photo.image.url(:thumb))
 		end
