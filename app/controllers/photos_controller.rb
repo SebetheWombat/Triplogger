@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
 	end
 
 	def imageUrl
-		@my_trip = current_user.trips.last
+		@my_trip = Trip.find(session[:trip_id])
 		@my_photos = @my_trip.photos
 		@photosArr = []
 		@my_photos.each do |photo|
